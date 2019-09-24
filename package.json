@@ -1,7 +1,7 @@
 {
-  "name": "rn-background-color",
-  "version": "1.0.0",
-  "author": "Rado Milushev && Andrey Bondarenko",
+  "name": "@codebet/react-native-background-color",
+  "version": "0.0.5",
+  "author": "Rado Milushev",
   "private": false,
   "license": "Unlicense",
   "repository": {
@@ -12,7 +12,7 @@
   "keywords": [
     "react-native",
     "background",
-    "android",
+    "color",
     "splash-screen"
   ],
   "scripts": {
@@ -20,6 +20,6 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "react-native": ">=0.38.0"
+    "react-native": ">=0.58.0"
   }
 }

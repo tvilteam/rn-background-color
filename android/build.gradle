@@ -1,21 +1,44 @@
-apply plugin: 'com.android.library'
+import groovy.json.JsonSlurper
 
-android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+def computeVersionName() {
+    // dynamically retrieve version from package.json
+    def slurper = new JsonSlurper()
+    def json = slurper.parse(file('../package.json'), "utf-8")
+    return json.version
+}
 
-    defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+buildscript {
+    repositories {
+        jcenter()
     }
-    lintOptions {
-        warning 'InvalidPackage'
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.5.0'
     }
 }
 
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 1
+        // get version name from package.json version
+        versionName computeVersionName()
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+repositories {
+    mavenCentral()
+}
 
 dependencies {
-    implementation 'com.facebook.react:react-native:+'
+    compile 'com.facebook.react:react-native:+'
 }
